@@ -135,31 +135,32 @@ A color palette using only shades of a single hue — in this case, black, white
 ## File Structure
 
 ```
-cards-against-humanity/
-├── CLAUDE.md                    # Claude Code instructions
-├── DEVELOPMENT.md               # This file
-├── web/                         # Online multiplayer web app
-│   ├── server.ts                # Custom Express + Socket.IO + Next.js
+cards-against-maya/
+├── CLAUDE.md                        # Claude Code instructions
+├── DEVELOPMENT.md                   # This file
+├── README.md
+├── web/                             # Online multiplayer web app
+│   ├── server.ts                    # Custom Express + Socket.IO + Next.js
 │   ├── package.json
 │   ├── next.config.mjs
 │   ├── tailwind.config.ts
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── page.tsx         # Home (join game)
-│   │   │   ├── layout.tsx       # Root layout + Inter font
-│   │   │   ├── globals.css      # Monochrome theme + animations
-│   │   │   ├── admin/page.tsx   # Card manager
+│   │   │   ├── page.tsx             # Home (join game)
+│   │   │   ├── layout.tsx           # Root layout + Inter font
+│   │   │   ├── globals.css          # Monochrome theme + animations
+│   │   │   ├── admin/page.tsx       # Card manager
 │   │   │   └── api/cards/route.ts
 │   │   ├── components/
-│   │   │   ├── card.tsx         # Single card (black/white)
-│   │   │   ├── card-hand.tsx    # Scrollable hand of cards
-│   │   │   ├── prompt-card.tsx  # Large prompt display
+│   │   │   ├── card.tsx             # Single card (black/white)
+│   │   │   ├── card-hand.tsx        # Scrollable hand of cards
+│   │   │   ├── prompt-card.tsx      # Large prompt display
 │   │   │   ├── lobby.tsx
 │   │   │   ├── playing-phase.tsx
 │   │   │   ├── judging-phase.tsx
 │   │   │   ├── round-result.tsx
 │   │   │   ├── game-over.tsx
-│   │   │   ├── game-view.tsx    # Phase router
+│   │   │   ├── game-view.tsx        # Phase router
 │   │   │   ├── scoreboard.tsx
 │   │   │   └── player-list.tsx
 │   │   ├── context/
@@ -173,14 +174,19 @@ cards-against-humanity/
 │   │       ├── game-manager.ts
 │   │       ├── socket-handlers.ts
 │   │       └── utils.ts
-│   └── data/                    # SQLite DB (created at runtime)
-├── generate_cards.py            # Print-ready PNG generator
-├── make_deck.py                 # CSV builder from batch files
-├── score_cards.py               # LLM scoring + selection
-├── extract_cards.py             # Source spreadsheet extractor
-├── cards_against_maya.csv       # Full 1068-card deck
-├── cards_against_maya_top612.csv # Curated 612-card deck
-├── scores/                      # LLM scoring JSON batches
-├── printable_cards/             # Generated PNGs
-└── venv/                        # Python virtualenv
+│   └── data/                        # SQLite DB (created at runtime)
+├── cards/                           # Card generation pipeline
+│   ├── generate_cards.py            # Print-ready PNG generator
+│   ├── make_deck.py                 # CSV builder from batch files
+│   ├── score_cards.py               # LLM scoring + selection
+│   ├── extract_cards.py             # Source spreadsheet extractor
+│   ├── cards_against_maya.csv       # Full 1068-card deck
+│   ├── cards_against_maya_top612.csv # Curated 612-card deck
+│   ├── batches/                     # Raw prompt/response batch text files
+│   ├── extracted/                   # One-time extraction output
+│   ├── scores/                      # LLM scoring JSON batches
+│   ├── source/                      # Original CAH source material
+│   ├── cah-generator/               # Upstream template repo (fonts, images)
+│   └── cah_generator/               # Generated files for cah-generator tool
+└── venv/                            # Python virtualenv
 ```

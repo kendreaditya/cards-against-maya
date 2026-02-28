@@ -34,6 +34,7 @@ Generate print-ready 1200 DPI PNGs suitable for [MakePlayingCards.com](https://w
 
 ```bash
 source venv/bin/activate
+cd cards
 python3 generate_cards.py
 # Output: printable_cards/ directory + ZIP bundle
 ```
@@ -53,32 +54,42 @@ python3 generate_cards.py
 
 ```
 cards-against-maya/
-├── web/                          # Online multiplayer web app
-│   ├── server.ts                 # Express + Socket.IO + Next.js server
+├── README.md
+├── CLAUDE.md
+├── DEVELOPMENT.md
+├── web/                              # Online multiplayer web app
+│   ├── server.ts                     # Express + Socket.IO + Next.js server
 │   ├── src/
-│   │   ├── app/                  # Next.js pages (home, admin, API)
-│   │   ├── components/           # Game UI (cards, lobby, phases, scoreboard)
-│   │   ├── lib/                  # Game engine, DB, types, socket handlers
-│   │   ├── context/              # React game state context
-│   │   └── hooks/                # Socket.IO client hook
+│   │   ├── app/                      # Next.js pages (home, admin, API)
+│   │   ├── components/               # Game UI (cards, lobby, phases, scoreboard)
+│   │   ├── lib/                      # Game engine, DB, types, socket handlers
+│   │   ├── context/                  # React game state context
+│   │   └── hooks/                    # Socket.IO client hook
 │   └── package.json
-├── generate_cards.py             # Print-ready PNG generator (1200 DPI)
-├── make_deck.py                  # Build master CSV from batch text files
-├── score_cards.py                # LLM scoring + top-612 selection
-├── extract_cards.py              # Extract from source CAH spreadsheet
-├── cards_against_maya.csv        # Full 1068-card deck
-├── cards_against_maya_top612.csv # Curated 612-card deck
-└── scores/                       # LLM scoring JSON batches
+├── cards/                            # Card generation pipeline
+│   ├── generate_cards.py             # Print-ready PNG generator (1200 DPI)
+│   ├── make_deck.py                  # Build master CSV from batch text files
+│   ├── score_cards.py                # LLM scoring + top-612 selection
+│   ├── extract_cards.py              # Extract from source CAH spreadsheet
+│   ├── cards_against_maya.csv        # Full 1068-card deck
+│   ├── cards_against_maya_top612.csv # Curated 612-card deck
+│   ├── batches/                      # Raw prompt/response batch text files
+│   ├── extracted/                    # One-time extraction output
+│   ├── scores/                       # LLM scoring JSON batches
+│   ├── source/                       # Original CAH source material
+│   ├── cah-generator/                # Upstream template repo (fonts, images)
+│   └── cah_generator/                # Generated files for cah-generator tool
+└── venv/                             # Python virtualenv (not committed)
 ```
 
 ## Card Pipeline
 
 The deck was built in four stages:
 
-1. **Extract** — Pull prompts/responses from the CAH Family Edition spreadsheet
-2. **Generate** — Create Krishna-conscious card text in numbered batch files
-3. **Score** — LLM-score every card across 6 dimensions (humor, appropriateness, versatility, cultural relevance, specificity, originality) and select the top 612
-4. **Render** — Generate print-ready 3288x4488px PNGs with the Cards Against Maya branding
+1. **Extract** (`cards/extract_cards.py`) — Pull prompts/responses from the CAH Family Edition spreadsheet
+2. **Generate** — Create Krishna-conscious card text in numbered batch files (`cards/batches/`)
+3. **Score** (`cards/score_cards.py`) — LLM-score every card across 6 dimensions (humor, appropriateness, versatility, cultural relevance, specificity, originality) and select the top 612
+4. **Render** (`cards/generate_cards.py`) — Generate print-ready 3288x4488px PNGs with the Cards Against Maya branding
 
 ## Deployment
 

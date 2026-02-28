@@ -22,8 +22,9 @@ from pathlib import Path
 
 # ── Configuration ──────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).parent
-PROMPT_FILES = sorted(BASE_DIR.glob("prompts_batch*.txt"))
-RESPONSE_FILES = sorted(BASE_DIR.glob("responses_batch*.txt"))
+BATCH_DIR = BASE_DIR / "batches"
+PROMPT_FILES = sorted(BATCH_DIR.glob("prompts_batch*.txt"))
+RESPONSE_FILES = sorted(BATCH_DIR.glob("responses_batch*.txt"))
 
 CSV_OUT = BASE_DIR / "cards_against_maya.csv"
 CAH_DIR = BASE_DIR / "cah_generator"
@@ -156,10 +157,10 @@ def main():
     print("\n=== Cards Against Maya - Deck Generator ===\n")
 
     if not PROMPT_FILES:
-        print("ERROR: No prompts_batch*.txt files found in", BASE_DIR)
+        print("ERROR: No prompts_batch*.txt files found in", BATCH_DIR)
         sys.exit(1)
     if not RESPONSE_FILES:
-        print("ERROR: No responses_batch*.txt files found in", BASE_DIR)
+        print("ERROR: No responses_batch*.txt files found in", BATCH_DIR)
         sys.exit(1)
 
     prompts = read_cards(PROMPT_FILES)

@@ -12,9 +12,11 @@ We collect unique card texts across both sections.
 
 import csv
 import os
+from pathlib import Path
 
-CSV_PATH = "/Users/kendreaditya/Downloads/cards-against-humanity/A Different CAH spreadsheet - CAH Family Edition.csv"
-OUT_DIR = "/Users/kendreaditya/Downloads/cards-against-humanity"
+BASE_DIR = Path(__file__).parent
+CSV_PATH = str(BASE_DIR / "source" / "A Different CAH spreadsheet - CAH Family Edition.csv")
+OUT_DIR = str(BASE_DIR / "extracted")
 
 prompts = set()
 responses = set()

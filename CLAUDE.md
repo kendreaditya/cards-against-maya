@@ -6,8 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 "Cards Against Maya" — a Krishna-conscious (ISKCON/Hare Krishna) family-friendly card game in the style of Cards Against Humanity. The project has two parts:
 
-1. **Card generation pipeline** — Python scripts that generate print-ready PNG card images from CSV card lists, suitable for upload to MakePlayingCards.com.
-2. **Online multiplayer web app** — A Next.js + Socket.IO web app that lets players play the game online in real-time. Deployed on Railway.
+1. **Card generation pipeline** (`cards/`) — Python scripts that generate print-ready PNG card images from CSV card lists, suitable for upload to MakePlayingCards.com.
+2. **Online multiplayer web app** (`web/`) — A Next.js + Socket.IO web app that lets players play the game online in real-time. Deployed on Railway.
 
 ## Web App (web/)
 
@@ -75,15 +75,15 @@ HOME (enter name) → LOBBY (wait for 3+ players) → PLAYING → JUDGING → RO
 - **Start**: `npm start` → `npx tsx server.ts`
 - **Environment**: `NODE_ENV=production`, `PORT` (set by Railway), `DB_PATH=/app/data/cards.db`
 - **Persistent volume**: Mounted at `/app/data` for SQLite database
-- No git repo — deploy via `railway up` (direct upload)
 
-## Card Generation Pipeline (Python)
+## Card Generation Pipeline (cards/)
 
 ### Key Commands
 
 ```bash
 # Activate the virtual environment (required before running any script)
 source venv/bin/activate
+cd cards
 
 # Generate print-ready card images (612 cards from curated deck)
 python3 generate_cards.py
@@ -91,7 +91,7 @@ python3 generate_cards.py
 # Generate from a different CSV
 python3 generate_cards.py cards_against_maya.csv
 
-# Build the master CSV from batch text files (prompts_batch*.txt, responses_batch*.txt)
+# Build the master CSV from batch text files (batches/prompts_batch*.txt, batches/responses_batch*.txt)
 python3 make_deck.py
 python3 make_deck.py --images  # also generate low-res PNG images
 
@@ -104,9 +104,9 @@ python3 extract_cards.py
 
 ### Pipeline
 
-1. **`extract_cards.py`** — One-time extraction from the source spreadsheet (`A Different CAH spreadsheet - CAH Family Edition.csv`). Reads cards from two independent column sections (cols 0-1 and cols 11-12), deduplicates, and writes `extracted_prompts.txt` / `extracted_responses.txt`.
+1. **`extract_cards.py`** — One-time extraction from the source spreadsheet (`source/A Different CAH spreadsheet - CAH Family Edition.csv`). Reads cards from two independent column sections (cols 0-1 and cols 11-12), deduplicates, and writes `extracted/extracted_prompts.txt` / `extracted/extracted_responses.txt`.
 
-2. **`make_deck.py`** — Reads numbered batch text files (`prompts_batch*.txt`, `responses_batch*.txt`), strips numbering prefixes, and produces:
+2. **`make_deck.py`** — Reads numbered batch text files (`batches/prompts_batch*.txt`, `batches/responses_batch*.txt`), strips numbering prefixes, and produces:
    - `cards_against_maya.csv` (master CSV, 1068 cards: 169 prompts + 899 responses)
    - `cah_generator/black.txt` + `white.txt` (for the upstream cah-generator tool)
 
