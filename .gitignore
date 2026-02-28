@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+printable_cards/
+web/node_modules/
+web/.next/
+web/dist/
+web/data/
+*.pyc
+.DS_Store
+.claude/

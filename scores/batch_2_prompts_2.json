@@ -1,0 +1,842 @@
+[
+  {
+    "card_text": "Lord Indra, we've run out of time. The only option is ________.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 4,
+    "specificity": 3,
+    "originality": 3
+  },
+  {
+    "card_text": "Hare Krishna. Here I go again. My my! How can I resist _____________?",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 3,
+    "specificity": 2,
+    "originality": 3
+  },
+  {
+    "card_text": "Me and my friends don't play with dolls anymore. We're into ______ now.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 2,
+    "specificity": 3,
+    "originality": 3
+  },
+  {
+    "card_text": "Mataji! Mataji! Look at me, Mataji! I'm _____________.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 4,
+    "specificity": 3,
+    "originality": 3
+  },
+  {
+    "card_text": "Mataji!? You have to come pick me up! There's ______ at this program.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 4,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "Mataji, there's an asura under my bed and he wants ______.",
+    "type": "Prompt",
+    "humor": 5,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 5
+  },
+  {
+    "card_text": "Matajis love ______.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 4,
+    "versatility": 5,
+    "cultural_relevance": 4,
+    "specificity": 1,
+    "originality": 1
+  },
+  {
+    "card_text": "My all-time favorite book is \"The Lion, The Witch, and ______\".",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 2,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "My prabhu and I enjoy ______ together.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 4,
+    "versatility": 4,
+    "cultural_relevance": 3,
+    "specificity": 2,
+    "originality": 2
+  },
+  {
+    "card_text": "My favorite book is \"The Amazing Adventures of ______\".",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 1,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "My favorite dinosaur is \"______asaurus.\"",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 3,
+    "cultural_relevance": 1,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "My name is Arjuna. I was blessed by Lord Shiva, and now I'm ______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "Never fear, Captain ______ is here!",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 1,
+    "specificity": 2,
+    "originality": 2
+  },
+  {
+    "card_text": "New from BBT Press! It's DURYO: The Game of ______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "New from the deity department, it's ______ Deity outfit!",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 4,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 4
+  },
+  {
+    "card_text": "New from Govinda's: it's the Govinda's ______ Samosa.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 3
+  },
+  {
+    "card_text": "Next from Vyasadeva: Bhagavatam and the Chapter of ______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "Next in the festival performance, Gopal will wow us with _____________.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 4,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "No fair! How come Radha gets her own kartals, and all I get is ______?",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 4
+  },
+  {
+    "card_text": "No, Govinda may not come over. He has yet to apologize for ______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 3,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "Nothing brings a congregation together quite like _____________.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 4,
+    "specificity": 2,
+    "originality": 2
+  },
+  {
+    "card_text": "Now in bookstores: Narada Muni and the Mystery of ______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "Now in toy stores: it's _____________ Hanuman!",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "Oh Dark Lord, we show our devotion with a humble offering of ______!",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 3,
+    "versatility": 4,
+    "cultural_relevance": 2,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "Oh no. Mataji's new marriage arrangement is _____________.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 4,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "Oh noooooo, the substitute Bhagavatam class speaker is ______!",
+    "type": "Prompt",
+    "humor": 5,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 4
+  },
+  {
+    "card_text": "Oh, no thank you, Mataji. I've had plenty of ______ prasadam for now.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "Oh, that's my mataji's friend Chaitanya Prabhu. He comes over and helps her with _______.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 3,
+    "versatility": 4,
+    "cultural_relevance": 4,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "Old MacDonald had _____________. Hare Krishna Hare Krishna.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 3,
+    "specificity": 3,
+    "originality": 4
+  },
+  {
+    "card_text": "On the 12th day of Janmashtami, my guru gave to me: ______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "On the next episode of \"Travels with Narada Muni,\" Narada explores _______.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "One ISKCON, under Krishna, indivisible, with mercy and ______ for all.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 3,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "Our day at the Yamuna was totally ruined by _______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 4,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "Govinda's Restaurant: No rules. Just ______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 4,
+    "specificity": 3,
+    "originality": 3
+  },
+  {
+    "card_text": "Prabhu, come quickly! There, in the tulasi garden! Do you see ______? Tell me you see it, Prabhu!",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 4
+  },
+  {
+    "card_text": "Temple security! Stop this devotee! He's ______!",
+    "type": "Prompt",
+    "humor": 5,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 4,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "Princess Rukmini, the kingdom is in danger! You must stop ______.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 4,
+    "specificity": 3,
+    "originality": 3
+  },
+  {
+    "card_text": "Put on your tilak, strap on your bead bag, and get ready for ______!",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 4
+  },
+  {
+    "card_text": "Rub a dub dub, _______ in the Radha Kunda!",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 4,
+    "versatility": 3,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 4
+  },
+  {
+    "card_text": "Run, run, as fast as you can. You can't catch me, I'm ______!",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 2,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "Quiet, Urmila! At least I'm not ______.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 4,
+    "specificity": 3,
+    "originality": 3
+  },
+  {
+    "card_text": "Son, we need to talk. We found _____________ under your asana mat.",
+    "type": "Prompt",
+    "humor": 5,
+    "appropriateness": 4,
+    "versatility": 5,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 5
+  },
+  {
+    "card_text": "Thanks for watching the ashram kids! Just a heads up: Gopika's going through a bit of a \"_____________ \" phase.",
+    "type": "Prompt",
+    "humor": 5,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 5
+  },
+  {
+    "card_text": "Thanks for watching! If you want to see more videos of ______, smash that subscribe button and chant Hare Krishna.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 4,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "That's not fair! You can't give me extra service for ______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "Lord Indra called. He needs _____________, NOW!",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 4,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "The aliens are here. They want _______.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 1,
+    "specificity": 2,
+    "originality": 2
+  },
+  {
+    "card_text": "The easiest way to tell me and my twin apart is that I have a freckle on my cheek and she's _______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 1,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "The hills of Govardhan are alive with the sound of _____________!",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 4
+  },
+  {
+    "card_text": "The warm August air was filled with change. Things were different, for Bhaktin Emily was now _______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 4,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "There's nothing better than a peanut butter and ______ sandwich from Govinda's.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 3,
+    "cultural_relevance": 4,
+    "specificity": 4,
+    "originality": 2
+  },
+  {
+    "card_text": "They call me \"Prabhu ______.\"",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 3,
+    "originality": 3
+  },
+  {
+    "card_text": "This Ratha Yatra election day, remember: a vote for me is a vote for _____________!",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "This is gonna be the best ashram sleepover ever. Once Mataji and Prabhu go to bed, it's time for ______!",
+    "type": "Prompt",
+    "humor": 5,
+    "appropriateness": 4,
+    "versatility": 5,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 4
+  },
+  {
+    "card_text": "This is your captain speaking. Fasten your seatbelts and prepare for _____________.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 1,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "Time to put on my favorite t-shirt, the one that says \"I heart ______.\"",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 2,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "Today we honor Narada Muni, the patron saint of ______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "Today, we had a gurukula assembly warning about the dangers of _____________.",
+    "type": "Prompt",
+    "humor": 5,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "We're good, Mataji! Other than _____________, we're all good!",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 3,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "We're not supposed to go in the brahmachari ashram storage room. They keep ______ in there.",
+    "type": "Prompt",
+    "humor": 5,
+    "appropriateness": 4,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 5
+  },
+  {
+    "card_text": "We're off to see the acharya, the wonderful acharya of ______!",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 3,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "Welcome to Govinda's, where every plate of prasadam comes with _____________!",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "Welcome! We're glad you're here at the temple. Now sit back, relax, and enjoy ______.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 4,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "Well, look at what we have here! A big fancy man walkin' in like he's ______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 2,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "What killed Old Bhishma?",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "What really killed the demons in Vrindavan?",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 3
+  },
+  {
+    "card_text": "What ruined Janmashtami?",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 5,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "What would be way cooler on fire?",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 4,
+    "versatility": 5,
+    "cultural_relevance": 1,
+    "specificity": 2,
+    "originality": 2
+  },
+  {
+    "card_text": "What's about to take this gurukula dance to the next level?",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "What's all fun and games until somebody gets hurt?",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 1,
+    "specificity": 2,
+    "originality": 1
+  },
+  {
+    "card_text": "What's keeping Prabhu so busy in the garage?",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 4,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "What's pretty much the stupidest thing in the world?",
+    "type": "Prompt",
+    "humor": 2,
+    "appropriateness": 4,
+    "versatility": 5,
+    "cultural_relevance": 1,
+    "specificity": 1,
+    "originality": 1
+  },
+  {
+    "card_text": "What's my mystic siddhi?",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "When I barfed, what came out of my mouth?",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 2,
+    "versatility": 4,
+    "cultural_relevance": 1,
+    "specificity": 3,
+    "originality": 1
+  },
+  {
+    "card_text": "When I grow up, I'm gonna be _____________.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 2,
+    "specificity": 2,
+    "originality": 1
+  },
+  {
+    "card_text": "When I look in the mirror, I see ______.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 1,
+    "specificity": 2,
+    "originality": 1
+  },
+  {
+    "card_text": "When I pooped, what came out of my butt?",
+    "type": "Prompt",
+    "humor": 2,
+    "appropriateness": 1,
+    "versatility": 4,
+    "cultural_relevance": 1,
+    "specificity": 3,
+    "originality": 1
+  },
+  {
+    "card_text": "Where do jivas come from?",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 3,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 4
+  },
+  {
+    "card_text": "Whoa there, partner! Looks like _______ spooked Arjuna's horses.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 4
+  },
+  {
+    "card_text": "Yarrrr! Captain Jatayu, 'tis bad luck to bring _____________ aboard a pushpaka vimana!",
+    "type": "Prompt",
+    "humor": 5,
+    "appropriateness": 5,
+    "versatility": 4,
+    "cultural_relevance": 5,
+    "specificity": 5,
+    "originality": 5
+  },
+  {
+    "card_text": "You don't love me, Prabhu. All you care about is ______.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 4,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "You're grounded, young lady! No ______ for a whole week.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 3,
+    "specificity": 3,
+    "originality": 2
+  },
+  {
+    "card_text": "Young lady, we do not allow ______ at the prasadam table.",
+    "type": "Prompt",
+    "humor": 4,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 5,
+    "specificity": 4,
+    "originality": 3
+  },
+  {
+    "card_text": "_______? No.",
+    "type": "Prompt",
+    "humor": 3,
+    "appropriateness": 5,
+    "versatility": 5,
+    "cultural_relevance": 1,
+    "specificity": 1,
+    "originality": 2
+  }
+]

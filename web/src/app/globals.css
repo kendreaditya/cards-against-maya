@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
+  --muted: #737373;
+  --border: #262626;
+  --surface: #141414;
+  --surface-hover: #1c1c1c;
+  --accent: #ffffff;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Animations ---- */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes cardDeal {
+  from {
+    opacity: 0;
+    transform: translateY(40px) rotate(-2deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
+}
+
+@keyframes trophy {
+  0% { transform: scale(0) rotate(-15deg); }
+  50% { transform: scale(1.15) rotate(5deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out both;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.4s ease-out both;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.4s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.35s ease-out both;
+}
+
+.animate-subtle-pulse {
+  animation: subtlePulse 2s ease-in-out infinite;
+}
+
+.animate-card-deal {
+  animation: cardDeal 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.animate-trophy {
+  animation: trophy 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  animation: fadeInUp 0.4s ease-out both;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 60ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 120ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 180ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 360ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 420ms; }
+.stagger-children > *:nth-child(9) { animation-delay: 480ms; }
+.stagger-children > *:nth-child(10) { animation-delay: 540ms; }
+
+/* Card deal stagger (for hand) */
+.stagger-deal > * {
+  animation: cardDeal 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.stagger-deal > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-deal > *:nth-child(2) { animation-delay: 50ms; }
+.stagger-deal > *:nth-child(3) { animation-delay: 100ms; }
+.stagger-deal > *:nth-child(4) { animation-delay: 150ms; }
+.stagger-deal > *:nth-child(5) { animation-delay: 200ms; }
+.stagger-deal > *:nth-child(6) { animation-delay: 250ms; }
+.stagger-deal > *:nth-child(7) { animation-delay: 300ms; }
+.stagger-deal > *:nth-child(8) { animation-delay: 350ms; }
+.stagger-deal > *:nth-child(9) { animation-delay: 400ms; }
+.stagger-deal > *:nth-child(10) { animation-delay: 450ms; }
+
+/* ---- Custom scrollbar ---- */
+
+.overflow-x-auto::-webkit-scrollbar {
+  height: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ---- Utility ---- */
+
+.text-balance {
+  text-wrap: balance;
+}
