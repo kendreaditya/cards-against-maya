@@ -4,7 +4,9 @@ printable_cards/
 web/node_modules/
 web/.next/
 web/dist/
-web/data/
+web/data/*.db
+web/data/*.db-shm
+web/data/*.db-wal
 *.pyc
 .DS_Store
 .claude/

@@ -17,10 +17,10 @@ export default function CardHand({
   disabled = false,
 }: CardHandProps) {
   return (
-    <div className="w-full overflow-x-auto pb-4 touch-pan-x">
+    <div className="w-full overflow-x-auto overflow-y-visible pb-4 pt-2 touch-pan-x">
       <div className="flex gap-3 px-4 min-w-min stagger-deal">
         {cards.map((card) => (
-          <div key={card.id}>
+          <div key={card.id} className="py-2">
             <Card
               text={card.text}
               type="response"

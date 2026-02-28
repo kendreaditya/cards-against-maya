@@ -4,6 +4,7 @@ export interface Card {
   type: 'prompt' | 'response';
   text: string;
   source: 'original' | 'custom';
+  is_top_scored?: boolean;
 }
 
 // Game phases
@@ -100,6 +101,7 @@ export interface ClientToServerEvents {
   'pick-winner': (cardId: number) => void;
   'next-round': () => void;
   'play-again': () => void;
+  'rate-cards': (ratings: { cardId: number; rating: number }[]) => void;
 }
 
 export const HAND_SIZE = 7;

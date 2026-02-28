@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAllCards, addCard, deleteCard } from '@/lib/db';
+import { getAllCards, addCard, deleteCard } from '@/lib/data';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'source must be original or custom' }, { status: 400 });
   }
 
-  const cards = getAllCards(type, source);
+  const cards = await getAllCards(type, source);
   return NextResponse.json(cards);
 }
 
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'text too long (max 500 characters)' }, { status: 400 });
   }
 
-  const card = addCard(type, trimmed);
+  const card = await addCard(type, trimmed);
   return NextResponse.json(card, { status: 201 });
 }
 
@@ -60,7 +60,7 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: 'id must be a number' }, { status: 400 });
   }
 
-  const success = deleteCard(parsed);
+  const success = await deleteCard(parsed);
   if (!success) {
     return NextResponse.json(
       { error: 'Card not found or is an original card' },

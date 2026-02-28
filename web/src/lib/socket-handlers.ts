@@ -10,6 +10,7 @@ import {
   getGame,
   getClientState,
 } from './game-manager';
+import { rateCards } from './data';
 import { ClientToServerEvents, ServerToClientEvents } from './types';
 
 export function setupSocketHandlers(
@@ -31,19 +32,19 @@ export function setupSocketHandlers(
         if (existingGame?.players.some((p) => p.id === socket.id && p.isConnected)) {
           throw new Error('You have already joined');
         }
-        const game = joinGame(socket.id, playerName.trim());
+        joinGame(socket.id, playerName.trim());
         broadcastGameState(io);
       } catch (err: any) {
         socket.emit('error', err.message);
       }
     });
 
-    socket.on('start-game', (pointsToWin: number) => {
+    socket.on('start-game', async (pointsToWin: number) => {
       try {
         if (typeof pointsToWin !== 'number' || !Number.isInteger(pointsToWin) || pointsToWin < 1 || pointsToWin > 50) {
           throw new Error('Points to win must be between 1 and 50');
         }
-        startGame(socket.id, pointsToWin);
+        await startGame(socket.id, pointsToWin);
         broadcastGameState(io);
       } catch (err: any) {
         socket.emit('error', err.message);
@@ -87,6 +88,32 @@ export function setupSocketHandlers(
       try {
         playAgain(socket.id);
         broadcastGameState(io);
+      } catch (err: any) {
+        socket.emit('error', err.message);
+      }
+    });
+
+    socket.on('rate-cards', async (ratings: { cardId: number; rating: number }[]) => {
+      try {
+        if (!Array.isArray(ratings) || ratings.length === 0) return;
+
+        // Validate each rating
+        for (const r of ratings) {
+          if (typeof r.cardId !== 'number' || !Number.isInteger(r.cardId)) {
+            throw new Error('Invalid card ID');
+          }
+          if (typeof r.rating !== 'number' || r.rating < 1 || r.rating > 5) {
+            throw new Error('Rating must be between 1 and 5');
+          }
+        }
+
+        // Get player name
+        const game = getGame();
+        const player = game?.players.find((p) => p.id === socket.id);
+        if (!player) throw new Error('Player not found');
+
+        const roundNumber = game?.currentRound?.number ?? 0;
+        await rateCards(player.name, ratings, roundNumber);
       } catch (err: any) {
         socket.emit('error', err.message);
       }

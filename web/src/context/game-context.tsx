@@ -8,12 +8,14 @@ interface GameContextType {
   gameState: ClientGameState | null;
   error: string | null;
   connected: boolean;
+  autoRejoining: boolean;
   joinGame: (playerName: string) => void;
   startGame: (pointsToWin: number) => void;
   submitCard: (cardId: number) => void;
   pickWinner: (cardId: number) => void;
   nextRound: () => void;
   playAgain: () => void;
+  rateCards: (ratings: { cardId: number; rating: number }[]) => void;
 }
 
 const GameContext = createContext<GameContextType | null>(null);

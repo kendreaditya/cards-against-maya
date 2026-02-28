@@ -5,12 +5,29 @@ import { GameProvider, useGame } from '@/context/game-context';
 import GameView from '@/components/game-view';
 
 function HomeContent() {
-  const { gameState, error, connected, joinGame } = useGame();
+  const { gameState, error, connected, autoRejoining, joinGame } = useGame();
   const [name, setName] = useState('');
   const [focused, setFocused] = useState(false);
 
   if (gameState) {
     return <GameView />;
+  }
+
+  if (autoRejoining) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center p-4">
+        <div className="text-center animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-3">
+            Cards Against
+            <br />
+            <span className="text-white">Maya</span>
+          </h1>
+          <p className="text-muted text-sm mt-4 animate-subtle-pulse">
+            Reconnecting...
+          </p>
+        </div>
+      </div>
+    );
   }
 
   return (

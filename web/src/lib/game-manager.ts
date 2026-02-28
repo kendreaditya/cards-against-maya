@@ -10,6 +10,7 @@ import {
   MIN_PLAYERS,
 } from './types';
 import { getCardsByType } from './db';
+import { getCardsByType as getCardsByTypeAsync } from './data';
 import { shuffle } from './utils';
 
 // Single global game
@@ -86,7 +87,7 @@ export function joinGame(socketId: string, playerName: string): GameState {
   return g;
 }
 
-export function startGame(socketId: string, pointsToWin: number): GameState {
+export async function startGame(socketId: string, pointsToWin: number): Promise<GameState> {
   if (!game) throw new Error('No game exists');
   if (game.hostId !== socketId) throw new Error('Only the host can start');
   if (game.players.length < MIN_PLAYERS)
@@ -94,8 +95,8 @@ export function startGame(socketId: string, pointsToWin: number): GameState {
 
   game.pointsToWin = pointsToWin;
 
-  // Load and shuffle decks
-  const { prompts, responses } = getCardsByType();
+  // Load and shuffle decks (async — tries Supabase, falls back to SQLite)
+  const { prompts, responses } = await getCardsByTypeAsync();
   game.promptDeck = shuffle(prompts);
   game.responseDeck = shuffle(responses);
 

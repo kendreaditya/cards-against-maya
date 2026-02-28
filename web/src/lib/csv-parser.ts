@@ -43,5 +43,5 @@ export function parseCSV(filePath: string): Card[] {
 }
 
 export function getCSVPath(): string {
-  return path.join(process.cwd(), 'data', 'cards_against_maya_top612.csv');
+  return path.join(process.cwd(), 'data', 'cards_against_maya.csv');
 }
