@@ -4,7 +4,7 @@ This document captures the key decisions, learnings, and implementation details 
 
 ## What We Built
 
-An online multiplayer version of "Cards Against Maya" — a Krishna-conscious, family-friendly card game in the style of Cards Against Humanity. The 612-card curated deck (102 prompts + 510 responses) that was already generated as print-ready PNGs is now playable online in real-time.
+An online multiplayer version of "Cards Against Maya" — a Krishna-conscious, family-friendly card game in the style of Cards Against Humanity. The full 1,068-card deck (169 prompts + 899 responses) is playable online in real-time, with the top 612 flagged as top-scored.
 
 **Live at**: https://shimmering-commitment-production.up.railway.app
 
@@ -28,13 +28,23 @@ Socket.IO requires attaching to an HTTP server, which Next.js's built-in server 
 
 **Key learning**: Railway's Nixpacks build works better than a custom Dockerfile for this setup. The standalone Next.js output doesn't bundle Express/Socket.IO/better-sqlite3, causing module resolution issues. Nixpacks just runs `npm install` + `npm run build` + `npm start`.
 
-### SQLite for Card Storage
+### Supabase + SQLite Dual Data Layer
 
-Used `better-sqlite3` (synchronous API) for card persistence. The database auto-seeds from `cards_against_maya_top612.csv` on first boot if the `cards` table is empty. This allows:
+The app uses a **unified data access layer** (`data.ts`) that tries Supabase first and falls back to SQLite:
 
-- Adding custom cards via the `/admin` page without modifying the CSV
-- Persisting custom cards across deployments (Railway persistent volume at `/app/data`)
-- Fast synchronous reads during game setup
+- `supabase.ts` — Supabase client with async query functions
+- `data.ts` — try/catch wrapper that routes to Supabase or SQLite
+- `db.ts` — SQLite (always available, auto-seeds from CSV)
+
+**Why dual**: Supabase provides cloud persistence and the `card_ratings` table for long-term data. SQLite ensures the app works even without Supabase configured (local dev, or if Supabase is down). Game state (`game-manager.ts`) calls `startGame()` which is async to support the Supabase path.
+
+### Full 1068-Card Deck with Quality Flags
+
+Switched from the curated 612-card deck to the full 1,068. Added `is_top_scored` boolean to the `Card` type and database schema. During SQLite seeding, the curated deck CSV is cross-referenced to flag top-scored cards. This allows future filtering (e.g., "play with only top-scored cards").
+
+### localStorage Auto-Rejoin
+
+Player name is stored in `localStorage` on successful join. On socket reconnect (page refresh, network blip), the hook auto-emits `join-game` with the stored name. The server's existing name-matching reconnection logic preserves the player's hand, score, and position. If the auto-rejoin fails (no active game), localStorage is cleared and the join form is shown.
 
 ### In-Memory Game State
 
@@ -53,33 +63,23 @@ A thorough audit found 9 bugs in the original implementation:
 ### Medium
 
 3. **No auth on `nextRound`** — Any player could advance the round. **Fix**: Added host/czar verification.
-
 4. **No auth on `playAgain`** — Any player could reset the game. **Fix**: Added host authorization check.
-
 5. **Socket handlers missing input validation** — Duplicate joins were possible. **Fix**: Added proper validation.
-
 6. **Stale `selectedId` in React components** — Selected card ID could persist across round changes. **Fix**: Added `useEffect` to reset selection when `round.number` changes.
 
 ### Low
 
 7. **Czar rotation could select disconnected player** — If all players disconnected, rotation would loop infinitely. **Fix**: Added connected-player count check.
-
 8. **Infinite loop in `drawCards`** — If no response cards remain after reshuffling, `drawCards` loops forever. **Fix**: Added guard after reshuffling.
-
 9. **`isHost` flag not cleared on old host** — When host transfers on disconnect, old player's `isHost` remained `true`. **Fix**: Set `player.isHost = false` before removal.
 
+### UI Bugs (found via screenshot)
+
+10. **Card hover scale clipped** — `overflow-x-auto` on the card hand container clipped the hover scale animation. **Fix**: Added `overflow-y-visible` and `py-2` padding on card wrappers.
+11. **Layout too narrow** — Game content constrained to `max-w-2xl` (672px). **Fix**: Expanded to `max-w-4xl`.
+12. **Mobile scoreboard too bulky** — Vertical sidebar took too much space on mobile. **Fix**: Replaced with compact horizontal top bar on mobile (`compact` prop on Scoreboard component), kept vertical sidebar on desktop (lg+).
+
 ## UI/UX: Monochrome Theme
-
-### What is a monochrome theme?
-
-A color palette using only shades of a single hue — in this case, black, white, and grays. No yellow, green, red, or any color accents.
-
-### Why monochrome?
-
-- Matches the iconic Cards Against Humanity aesthetic (stark black and white cards)
-- Creates visual focus — the card text is what matters, not UI chrome
-- Feels premium and clean
-- Reduces visual noise on mobile
 
 ### Color Palette
 
@@ -120,17 +120,14 @@ A color palette using only shades of a single hue — in this case, black, white
 - **Build**: Nixpacks (auto-detected `npm run build`)
 - **Start**: `npm start` → `npx tsx server.ts`
 - **Volume**: Persistent volume at `/app/data` for SQLite
-- **Deploy**: `npx @railway/cli up` from project root (no git — direct upload)
+- **Deploy**: `cd web && npx @railway/cli up`
 
 ### Deployment Learnings
 
-1. **Nixpacks > Docker** for this stack. The custom Dockerfile had issues with Next.js standalone mode not bundling native dependencies (`better-sqlite3`). Nixpacks "just works" — it runs `npm install`, `npm run build`, and `npm start` with proper native module support.
-
-2. **`better-sqlite3` needs native compilation** — it's a C++ addon. Nixpacks handles this automatically. Docker would need `node-gyp` + build tools in the image.
-
+1. **Nixpacks > Docker** for this stack. The custom Dockerfile had issues with Next.js standalone mode not bundling native dependencies (`better-sqlite3`). Nixpacks "just works".
+2. **`better-sqlite3` needs native compilation** — Nixpacks handles this automatically. Docker would need `node-gyp` + build tools.
 3. **Railway's `PORT` env var** must be respected. The server reads `process.env.PORT` and defaults to 3000 locally.
-
-4. **No git repo needed** — `railway up` uploads the directory directly. Useful for quick iteration without git ceremony.
+4. **Railway CLI must be run from `web/`** — the Railway project is linked to the `web/` directory, not the repo root.
 
 ## File Structure
 
@@ -138,50 +135,56 @@ A color palette using only shades of a single hue — in this case, black, white
 cards-against-maya/
 ├── CLAUDE.md                        # Claude Code instructions
 ├── DEVELOPMENT.md                   # This file
-├── README.md
+├── README.md                        # Project overview + AI collaboration history
+├── TODO.md                          # Task tracker
 ├── web/                             # Online multiplayer web app
 │   ├── server.ts                    # Custom Express + Socket.IO + Next.js
 │   ├── package.json
 │   ├── next.config.mjs
 │   ├── tailwind.config.ts
+│   ├── data/                        # CSV seed files + SQLite DB (runtime)
+│   │   ├── cards_against_maya.csv   # Full 1068-card deck (seed source)
+│   │   └── cards_against_maya_top612.csv  # Curated deck (for is_top_scored flags)
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── page.tsx             # Home (join game)
+│   │   │   ├── page.tsx             # Home (join game, auto-reconnect)
 │   │   │   ├── layout.tsx           # Root layout + Inter font
-│   │   │   ├── globals.css          # Monochrome theme + animations
+│   │   │   ├── globals.css          # Monochrome theme + 14 animations
 │   │   │   ├── admin/page.tsx       # Card manager
-│   │   │   └── api/cards/route.ts
+│   │   │   └── api/cards/route.ts   # REST API (uses data.ts)
 │   │   ├── components/
 │   │   │   ├── card.tsx             # Single card (black/white)
-│   │   │   ├── card-hand.tsx        # Scrollable hand of cards
+│   │   │   ├── card-hand.tsx        # Scrollable hand (overflow-y-visible)
 │   │   │   ├── prompt-card.tsx      # Large prompt display
+│   │   │   ├── add-card-modal.tsx   # Card submission modal + writing tips
 │   │   │   ├── lobby.tsx
 │   │   │   ├── playing-phase.tsx
 │   │   │   ├── judging-phase.tsx
-│   │   │   ├── round-result.tsx
+│   │   │   ├── round-result.tsx     # + card rating UI (1-5 dots)
 │   │   │   ├── game-over.tsx
-│   │   │   ├── game-view.tsx        # Phase router
-│   │   │   ├── scoreboard.tsx
+│   │   │   ├── game-view.tsx        # Phase router + floating "+" button
+│   │   │   ├── scoreboard.tsx       # Desktop sidebar + mobile compact bar
 │   │   │   └── player-list.tsx
 │   │   ├── context/
-│   │   │   └── game-context.tsx
+│   │   │   └── game-context.tsx     # Exposes rateCards + autoRejoining
 │   │   ├── hooks/
-│   │   │   └── use-socket.ts
+│   │   │   └── use-socket.ts        # + localStorage auto-rejoin
 │   │   └── lib/
-│   │       ├── types.ts
-│   │       ├── db.ts
-│   │       ├── csv-parser.ts
-│   │       ├── game-manager.ts
-│   │       ├── socket-handlers.ts
+│   │       ├── types.ts             # + is_top_scored, rate-cards event
+│   │       ├── data.ts              # Unified async data layer
+│   │       ├── supabase.ts          # Supabase client + queries
+│   │       ├── db.ts                # SQLite + card_ratings table
+│   │       ├── csv-parser.ts        # Points to full 1068-card CSV
+│   │       ├── game-manager.ts      # async startGame()
+│   │       ├── socket-handlers.ts   # + rate-cards handler
 │   │       └── utils.ts
-│   └── data/                        # SQLite DB (created at runtime)
 ├── cards/                           # Card generation pipeline
-│   ├── generate_cards.py            # Print-ready PNG generator
-│   ├── make_deck.py                 # CSV builder from batch files
-│   ├── score_cards.py               # LLM scoring + selection
-│   ├── extract_cards.py             # Source spreadsheet extractor
+│   ├── generate_cards.py
+│   ├── make_deck.py
+│   ├── score_cards.py
+│   ├── extract_cards.py
 │   ├── cards_against_maya.csv       # Full 1068-card deck
-│   ├── cards_against_maya_top612.csv # Curated 612-card deck
+│   ├── cards_against_maya_top612.csv
 │   ├── batches/                     # Raw prompt/response batch text files
 │   ├── extracted/                   # One-time extraction output
 │   ├── scores/                      # LLM scoring JSON batches
