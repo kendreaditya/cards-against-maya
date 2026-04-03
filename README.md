@@ -2,7 +2,7 @@
 
 A Krishna-conscious (ISKCON/Hare Krishna) family-friendly card game in the style of Cards Against Humanity — playable online or as printed cards.
 
-**Play now:** [shimmering-commitment-production.up.railway.app](https://shimmering-commitment-production.up.railway.app)
+**Play now:** [secure-courage-production-4e21.up.railway.app](https://secure-courage-production-4e21.up.railway.app)
 
 ## How It Works
 
@@ -17,7 +17,7 @@ One player creates a game, others join by entering their name. Each round:
 
 ## Play Online
 
-The web app is live at **[shimmering-commitment-production.up.railway.app](https://shimmering-commitment-production.up.railway.app)**. Just enter your name and join. No accounts, no downloads, no room codes — everyone joins one shared game.
+The web app is live at **[secure-courage-production-4e21.up.railway.app](https://secure-courage-production-4e21.up.railway.app)**. Just enter your name and join. No accounts, no downloads, no room codes — everyone joins one shared game.
 
 ### Run Locally
 

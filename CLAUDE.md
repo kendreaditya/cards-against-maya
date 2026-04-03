@@ -104,8 +104,8 @@ HOME (enter name) → LOBBY (wait for 3+ players) → PLAYING → JUDGING → RO
 ### Deployment
 
 - **Platform**: Railway
-- **Project**: `shimmering-commitment`
-- **URL**: `https://shimmering-commitment-production.up.railway.app`
+- **Project**: `secure-courage`
+- **URL**: `https://secure-courage-production-4e21.up.railway.app`
 - **Deploy command**: `cd web && npx @railway/cli up`
 - **Build**: `npm run build` (Nixpacks auto-detected)
 - **Start**: `npm start` → `npx tsx server.ts`
